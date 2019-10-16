@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Battle city</title>
+</head>
+
+<body>
+
+    <script src='./engine/Loader.js'></script>
+    <script>
+        const {Loader} = GameEngine;
+
+        const loader = new Loader();
+
+        loader.addImage('cats', './static/cats.jpg');
+        loader.addJson('users', './static/users.json');
+        
+        loader.load(() => {
+            console.log('imgs done');
+        });
+
+
+        Loader
+        .loadImage('./static/cats.jpg')
+        .then(image => {
+            document.body.appendChild(image)
+        });
+    </script>
+</body>
+
+</html>
