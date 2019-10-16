@@ -2,6 +2,7 @@
 (function () {
     'use strict'
 
+//data loader
     class Loader {
         constructor() {
             this.loadOrder = {
@@ -13,7 +14,7 @@
                 jsons: [],
             }
         };
-
+//adds imgs to the queue
         addImage(name, src) {
             //console.log('name: ', name);
             this.loadOrder.images.push({
@@ -21,7 +22,7 @@
                 src
             });
         }
-
+//adds jsons to the queue
         addJson(id, address) {
             this.loadOrder.jsons.push({
                 id,
@@ -31,8 +32,9 @@
 
 
         load(clb) {
+            //console.log(clb);
             const promises = [];
-
+//if imgs loaded clears queue
             for (const imageData of this.loadOrder.images) {
                 //console.log('imageData: ', imageData); 
                 const { name, src } = imageData;
@@ -49,9 +51,9 @@
                     })
                 promises.push(promise);
             };
-
+//if jsons loaded clears queue
             for (const jsonData of this.loadOrder.jsons) {
-                console.log('jsonData: ', jsonData); 
+                //console.log('jsonData: ', jsonData); 
                 const { id, address } = jsonData;
 
                 const promise = Loader
@@ -69,7 +71,7 @@
 
             Promise.all(promises).then(clb)
         }
-
+//loading imgs
         static loadImage(src) {
             return new Promise((resolve, reject) => {
                 try {
@@ -83,7 +85,7 @@
                 }
             })
         }
-
+//loading jsons
         static loadJson (address) {
             return new Promise((resolve, reject) => {
                 fetch(address)
@@ -93,7 +95,7 @@
             })
         }
     }
-
+//???
     window.GameEngine = window.GameEngine || {};
     window.GameEngine.Loader = Loader;
 

@@ -9,6 +9,18 @@
         "id": 2,
         "name": "Masha",
         "age": 38
+    },
+
+    {
+        "id": 3,
+        "name": "Pinkie Pie",
+        "age": 5
+    },
+
+    {
+        "id": 4,
+        "name": "Rainbow Dash",
+        "age": 10
     }
     
 ]
