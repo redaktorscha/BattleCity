@@ -12,23 +12,37 @@
 
     <script src='./engine/Loader.js'></script>
     <script>
-        const {Loader} = GameEngine;
+        const {
+            Loader
+        } = GameEngine;
 
         const loader = new Loader();
 
         loader.addImage('cats', './static/cats.jpg');
+        loader.addImage('kitten', './static/kitten.jpg');
+
         loader.addJson('users', './static/users.json');
-        
+
         loader.load(() => {
             console.log(loader.resources.jsons);
         });
 
+        const urls = ['./static/cats.jpg', './static/kitten.jpg'];
 
-        Loader
-        .loadImage('./static/cats.jpg')
-        .then(image => {
-            document.body.appendChild(image)
-        });
+        urls.forEach(url => {
+            Loader
+            .loadImage(url)
+            .then(image => {
+                document.body.appendChild(image);
+                image.style.cssText = `
+            width: 400px;
+            display: block;
+            `
+            });
+        })
+
+        
+            
     </script>
 </body>
 
